@@ -1,405 +1,206 @@
-<div class="formbold-main-wrapper">
-    <!-- Author: FormBold Team -->
-    <!-- Learn More: https://formbold.com -->
-    <div class="formbold-form-wrapper">
-      <img src="your-image-url-here.jpg">
-      <form action="https://formbold.com/s/FORM_ID" method="POST">
-        <div class="formbold-input-group">
-          <label for="name" class="formbold-form-label"> Name </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter your name"
-            class="formbold-form-input"
-          />
-        </div>
-  
-        <div class="formbold-input-group">
-          <label for="email" class="formbold-form-label"> Email </label>
-          <input
-            type="email"
-            name="lastname"
-            id="email"
-            placeholder="Enter your email"
-            class="formbold-form-input"
-          />
-        </div>
-  
-        <div class="formbold-input-group">
-          <label for="age" class="formbold-form-label"> Age </label>
-          <input
-            type="text"
-            name="age"
-            id="age"
-            placeholder="Enter your age"
-            class="formbold-form-input"
-          />
-        </div>
-  
-        <div class="formbold-input-group">
-          <label class="formbold-form-label">
-            Which option best describes you?
-          </label>
-  
-          <select class="formbold-form-select" name="occupation" id="occupation">
-            <option value="Student">Student</option>
-            <option value="designer">UX/UI Designer</option>
-            <option value="fullstack">Full Stack Developer</option>
-            <option value="frontend">Front End Developer</option>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+</head>
+
+<body>
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">ECE286 Survey</h1>
+      </div>
+    </div>
+  </section>
+
+  <form id="form" class="container m-4 pl-4" method="POST">
+
+    <!-- Name -->
+    <div class="field part1">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Your Full Name" name="Name" />
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="field part1">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" placeholder="Your Email" name="Email" />
+      </div>
+    </div>
+
+    <!-- University -->
+    <div class="field part1">
+      <label class="label">University</label>
+      <div class="control">
+        <div class="select">
+          <select>
+            <option name="University" value="University of Toronto">University of Toronto</option>
+            <option name="University" value="University of Waterloo">University of Waterloo</option>
+            <option name="University" value="Other">Other</option>
           </select>
         </div>
-  
-        <div class="formbold-input-radio-wrapper">
-          <label for="ans" class="formbold-form-label">
-            Would you recomend our site to a friend?
-          </label>
-  
-          <div class="formbold-radio-flex">
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="ans"
-                  id="ans"
-                />
-                Yes
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="ans"
-                  id="ans"
-                />
-                No
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="ans"
-                  id="ans"
-                />
-                Maybe
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-  
-        <div class="formbold-input-radio-wrapper">
-          <label class="formbold-form-label">
-            Which languages & freameworks you know?
-          </label>
-  
-          <div class="formbold-radio-flex">
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="c">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="c"
-                  id="c"
-                />
-                C
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="c++">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="c++"
-                  id="c++"
-                />
-                c++
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="java">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="java"
-                  id="java"
-                />
-                Java
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="python">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="python"
-                  id="python"
-                />
-                Python
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="javaScript">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="javaScript"
-                  id="javaScript"
-                />
-                JavaScript
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="react">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="react"
-                  id="react"
-                />
-                React
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="angular">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="angular"
-                  id="angular"
-                />
-                Angular
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="django">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="django"
-                  id="django"
-                />
-                Django
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="tailwind">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="tailwind"
-                  id="tailwind"
-                />
-                Tailwind CSS
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-  
-            <div class="formbold-radio-group">
-              <label class="formbold-radio-label" for="bootstrap">
-                <input
-                  class="formbold-input-radio"
-                  type="radio"
-                  name="bootstrap"
-                  id="bootstrap"
-                />
-                Bootstrap
-                <span class="formbold-radio-checkmark"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-  
-        <div>
-          <label for="message" class="formbold-form-label">
-            Any comments or suggestions
-          </label>
-          <textarea
-            rows="6"
-            name="message"
-            id="message"
-            placeholder="Type here..."
-            class="formbold-form-input"
-          ></textarea>
-        </div>
-  
-        <button class="formbold-btn">Submit</button>
-      </form>
+      </div>
     </div>
-  </div>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    .formbold-main-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 48px;
-    }
-  
-    .formbold-form-wrapper {
-      margin: 0 auto;
-      max-width: 570px;
-      width: 100%;
-      background: white;
-      padding: 40px;
-    }
-  
-    .formbold-form-img {
-      margin-bottom: 45px;
-    }
-  
-    .formbold-input-group {
-      margin-bottom: 18px;
-    }
-  
-    .formbold-form-select {
-      width: 100%;
-      padding: 12px 22px;
-      border-radius: 5px;
-      border: 1px solid #dde3ec;
-      background: #ffffff;
-      font-size: 16px;
-      color: #536387;
-      outline: none;
-      resize: none;
-    }
-  
-    .formbold-input-radio-wrapper {
-      margin-bottom: 25px;
-    }
-    .formbold-radio-flex {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .formbold-radio-label {
-      font-size: 14px;
-      line-height: 24px;
-      color: #07074d;
-      position: relative;
-      padding-left: 25px;
-      cursor: pointer;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    .formbold-input-radio {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
-    .formbold-radio-checkmark {
-      position: absolute;
-      top: -1px;
-      left: 0;
-      height: 18px;
-      width: 18px;
-      background-color: #ffffff;
-      border: 1px solid #dde3ec;
-      border-radius: 50%;
-    }
-    .formbold-radio-label
-      .formbold-input-radio:checked
-      ~ .formbold-radio-checkmark {
-      background-color: #6a64f1;
-    }
-    .formbold-radio-checkmark:after {
-      content: '';
-      position: absolute;
-      display: none;
-    }
-  
-    .formbold-radio-label
-      .formbold-input-radio:checked
-      ~ .formbold-radio-checkmark:after {
-      display: block;
-    }
-  
-    .formbold-radio-label .formbold-radio-checkmark:after {
-      top: 50%;
-      left: 50%;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ffffff;
-      transform: translate(-50%, -50%);
-    }
-  
-    .formbold-form-input {
-      width: 100%;
-      padding: 13px 22px;
-      border-radius: 5px;
-      border: 1px solid #dde3ec;
-      background: #ffffff;
-      font-weight: 500;
-      font-size: 16px;
-      color: #07074d;
-      outline: none;
-      resize: none;
-    }
-    .formbold-form-input::placeholder {
-      color: #536387;
-    }
-    .formbold-form-input:focus {
-      border-color: #6a64f1;
-      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
-    }
-    .formbold-form-label {
-      color: #07074d;
-      font-size: 14px;
-      line-height: 24px;
-      display: block;
-      margin-bottom: 10px;
-    }
-  
-    .formbold-btn {
-      text-align: center;
-      width: 100%;
-      font-size: 16px;
-      border-radius: 5px;
-      padding: 14px 25px;
-      border: none;
-      font-weight: 500;
-      background-color: #6a64f1;
-      color: white;
-      cursor: pointer;
-      margin-top: 25px;
-    }
-    .formbold-btn:hover {
-      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
-    }
-  </style>
+
+    <!-- Year of Study -->
+    <div class="field part1">
+      <label class="label">Year of Study</label>
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="Year" value="1" /> 1
+        </label>
+        <label class="radio">
+          <input type="radio" name="Year" value="2" /> 2
+        </label>
+        <label class="radio">
+          <input type="radio" name="Year" value="3" /> 3
+        </label>
+        <label class="radio">
+          <input type="radio" name="Year" value="4" /> 4
+        </label>
+        <label class="radio">
+          <input type="radio" name="Year" value="Other" /> Other
+        </label>
+      </div>
+    </div>
+
+    <!-- Consent -->
+    <div class="field part1">
+
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox" name="Consent" />
+          I agree to participate in this study.
+        </label>
+      </div>
+      <p id="consent-message" class="help is-danger" style="display: none;">Please agree to participate in this study.</p>
+    </div>
+
+
+
+    <!-- First Next Button -->
+    <div class="field part1">
+      <div class="control">
+        <button class="button is-primary" type="button" id="next1">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="field part3" style="display: none;">
+      <div class="control">
+        <button class="button is-primary" type="submit" id="submit-button">
+          Submit
+        </button>
+      </div>
+    </div>
+
+    <!-- Submission Message -->
+    <div id="message" class="message" style="display: none;">
+      <div class="message-body"></div>
+    </div>
+
+  </form>
+
+
+  <script>
+    // First Next Button
+    document.getElementById("next1").addEventListener("click", function () {
+
+      //check checkbox
+      if (!document.getElementsByName("Consent")[0].checked) {
+        document.getElementById("consent-message").style.display = "block";
+        return;
+      }
+
+      Array.from(document.getElementsByClassName("part1")).forEach(function (element) {
+        element.style.display = "none";
+      });
+
+      Array.from(document.getElementsByClassName("part2")).forEach(function (element) {
+        element.style.display = "block";
+      });
+    });
+
+
+
+    // Submit Button
+    document.getElementById("form").addEventListener("submit", function (e) {
+
+      // Prevent the default form submission
+      e.preventDefault();
+
+      // Update Display Message
+      var messageDiv = document.getElementById("message");
+      var messageBody = messageDiv.querySelector(".message-body");
+      messageDiv.classList.add("is-warning");
+      messageBody.textContent = "Submitting..";
+      messageDiv.style.display = "block";
+      document.getElementById("submit-button").disabled = true;
+
+      // Collect the form data
+      var formData = new FormData(this);
+      var keyValuePairs = [];
+      for (var pair of formData.entries()) {
+        keyValuePairs.push(pair[0] + "=" + pair[1]);
+      }
+      var formDataString = keyValuePairs.join("&");
+      console.log(formDataString);
+
+      // Send a POST request to your Google Apps Script
+      fetch(
+        "https://script.google.com/macros/s/AKfycbwoUTKYNR82YRn_Eec_78M2M3g1rV-Cjc3zpmKYYEnBYxt7X13r9suEVzLcRpLgKGd7Qw/exec",
+        {
+          redirect: "follow",
+          method: "POST",
+          body: formDataString,
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+        }
+      ).then(function (response) {
+
+        // Check if the request was successful
+        if (response.ok) {
+          return response;
+        } else {
+          throw new Error("Failed to submit the form.");
+        }
+
+      }).then(function (data) {
+
+        // Display a success message
+        messageBody.textContent = "Data submitted successfully! Thank you for your response.";
+        messageDiv.classList.remove("is-warning");
+        messageDiv.classList.add("is-success");
+        document.getElementById("submit-button").disabled = false;
+        document.getElementById("form").reset();
+
+        // Hide the message after a few seconds
+        setTimeout(function () {
+          messageBody.textContent = "";
+          messageDiv.classList.remove("is-success");
+          messageDiv.classList.remove("is-warning");
+          messageDiv.style.display = "none";
+        }, 2600);
+
+      }).catch(function (error) {
+
+        // Handle errors
+        console.error(error);
+        messageBody.textContent = "An error occurred while submitting the form.";
+        messageDiv.classList.remove("is-warning");
+        messageDiv.classList.add("is-danger");
+        document.getElementById("submit-button").disabled = false;
+
+      });
+    });
+  </script>
+</body>
+
+</html>
