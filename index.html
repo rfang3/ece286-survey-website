@@ -37,10 +37,10 @@
       <label class="label">University</label>
       <div class="control">
         <div class="select">
-          <select>
-            <option name="University" value="University of Toronto">University of Toronto</option>
-            <option name="University" value="University of Waterloo">University of Waterloo</option>
-            <option name="University" value="Other">Other</option>
+          <select name="University">
+            <option value="University of Toronto">University of Toronto</option>
+            <option value="University of Waterloo">University of Waterloo</option>
+            <option value="Other">Other</option>
           </select>
         </div>
       </div>
@@ -77,13 +77,15 @@
           I agree to participate in this study.
         </label>
       </div>
-      <p id="consent-message" class="help is-danger" style="display: none;">Please agree to participate in this study.</p>
+      <p id="consent-message" class="help is-danger" style="display: none;">Please agree to participate in this study.
+      </p>
     </div>
 
     <div class="field part1">
-      In this survey, you will be asked to read two resumes and answer 5 multiple choices for each resume. Try to answer the questions as quickly and accurately as possible. Click the "Next" button to start reading the first resume.
+      In this survey, you will be asked to read two resumes and answer 5 multiple choices for each resume. Try to answer
+      the questions as quickly and accurately as possible. Click the "Next" button to start reading the first resume.
     </div>
-    
+
 
     <!-- First Next Button -->
     <div class="field part1">
@@ -94,24 +96,157 @@
       </div>
     </div>
 
+    <!-- Resume 1 -->
+    <div class="field part2" style="display: none;">
+      <embed id="resume1" width=100% height="800px" />
+    </div>
+
+    <!-- Questions 1 -->
+    <div id="questions1" class="field part2" style="display: none;"></div>
+
+    <!-- Second Next Button -->
+    <div class="field part2" style="display: none;">
+      <p id="unanswered1" class="help is-danger mb-4" style="display: none;">Please answer all questions.
+      </p>
+      <div class="control">
+        <button class="button is-primary" type="button" id="next2">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- Resume 2 -->
+    <div class="field part3" style="display: none;">
+      <embed id="resume2" width=100% height="800px" />
+    </div>
+
+    <!-- Questions 2 -->
+    <div id="questions2" class="field part3" style="display: none;"></div>
+
     <!-- Submit Button -->
     <div class="field part3" style="display: none;">
+      <p id="unanswered2" class="help is-danger mb-4" style="display: none;">Please answer all questions.
+      </p>
       <div class="control">
         <button class="button is-primary" type="submit" id="submit-button">
           Submit
         </button>
       </div>
+
     </div>
 
     <!-- Submission Message -->
-    <div id="message" class="message" style="display: none;">
+    <div id="message" class="message mb-4" style="display: none;">
       <div class="message-body"></div>
     </div>
 
   </form>
 
+  <script>
+    // Functions to insert quesitons
+
+    function insertQuestions(questions, choices, containerId, resumeType) {
+      var container = document.getElementById(containerId);
+
+      for (const [index, question] of questions.entries()) {
+        var questionDiv = document.createElement("div");
+        questionDiv.className = "field";
+        questionDiv.innerHTML = `
+        <label class="label">${question}</label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="Question ${index + 1} ${resumeType}" value="a" /> ${choices[index][0]}
+          </label><br>
+          <label class="radio">
+            <input type="radio" name="Question ${index + 1} ${resumeType}" value="b" /> ${choices[index][1]}
+          </label><br>
+          <label class="radio">
+            <input type="radio" name="Question ${index + 1} ${resumeType}" value="c" /> ${choices[index][2]}
+          </label>
+        </div>
+      `;
+        container.appendChild(questionDiv);
+      }
+    }
+
+    // Function to check if all questions are answered
+    function areAllQuestionsAnswered(containerId) {
+      var container = document.getElementById(containerId);
+      var questions = container.querySelectorAll('.field');
+      for (var i = 0; i < questions.length; i++) {
+        var radios = questions[i].querySelectorAll('input[type="radio"]');
+        var isAnswered = Array.from(radios).some(radio => radio.checked);
+        if (!isAnswered) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+
+    // Randomize Resumes
+
+    var resumeCombinations = [["pdfs\\NF sans-serif resume.pdf", "pdfs\\SN serif resume.pdf"], ["pdfs\\NF serif resume.pdf", "pdfs\\SN sans-serif resume.pdf"]];
+
+    var questions = [[ // questions for NF
+      "1. What is Nigel Fu's current academic status?",
+      "2. What programming languages is Nigel proficient in?",
+      "3. What was one of Nigel's responsibilities as an Undergraduate Research Assistant?",
+      "4. What area of chemical engineering is Nigel passionate about?",
+      "5. During his role as a Process Engineering Intern, what simulation tool did Nigel use?"
+    ], [ // questions for SN
+      "1. Where is Serena currently pursuing her Bachelor's degree?",
+      "2. What was one of Serena's main responsibilities as a Hardware Engineering Intern?",
+      "3. In her Undergraduate Research Assistant role, what kind of systems did Serena work on?",
+      "4. Which of the following is NOT listed as one of Serena's skills?",
+      "5. What was the primary objective of Serena's custom FPGA-based signal processing project?"
+    ]];
+
+    var choices = [
+      [ // choices for NF
+        ["First-year undergraduate student", "Third-year undergraduate student", "Graduate student"],
+        ["Python and C", "Java and C++", "R and JavaScript"],
+        ["Designing mechanical components for manufacturing", "Conducting laboratory experiments and maintaining lab equipment", "Developing mobile applications for chemical process monitoring"],
+        ["Polymer synthesis", "Environmental remediation", "Data analysis and process design"],
+        ["COMSOL Multiphysics", "SolidWorks", "ANSYS Fluent"]
+      ],
+      [ // choices for SN
+        ["University of Toronto", "Massachusetts Institute of Technology (MIT)", "Stanford University"],
+        ["Writing firmware for mobile applications", "Developing FPGA-based hardware acceleration modules using VHDL/Verilog", "Designing web-based user interfaces"],
+        ["High-performance computing clusters", "Low-power IoT applications", "Autonomous robotic systems"],
+        ["PCB layout and schematic design", "Web development with JavaScript", "Hardware debugging using oscilloscopes and logic analyzers"],
+        ["To develop a machine learning algorithm for predictive maintenance", "To create a new power-efficient microcontroller", "To optimize performance for low-latency applications"]
+      ]
+    ];
+
+    var randomIndex = Math.floor(Math.random() * 2);
+
+    var order = Math.floor(Math.random() * 2);
+
+    var combination = resumeCombinations[randomIndex];
+
+    var resumeType1 = `${order ? "SN" : "NF"} ${(randomIndex && !order) || (!randomIndex && order) ? "Serif" : "Sans-Serif"}`;
+
+    var resumeType2 = `${order ? "NF" : "SN"} ${(randomIndex && !order) || (!randomIndex && order) ? "Sans-Serif" : "Serif"}`;
+
+    // update resume 1
+    document.getElementById("resume1").src = combination[order];
+
+    insertQuestions(questions[order], choices[order], "questions1", resumeType1);
+
+    // update resume 2
+    document.getElementById("resume2").src = combination[1 - order];
+
+    insertQuestions(questions[1 - order], choices[1 - order], "questions2", resumeType2);
+
+  </script>
 
   <script>
+
+    var time1 = null;
+    var time2 = null;
+    var time3 = null;
+
     // First Next Button
     document.getElementById("next1").addEventListener("click", function () {
 
@@ -120,6 +255,8 @@
         document.getElementById("consent-message").style.display = "block";
         return;
       }
+
+      time1 = new Date();
 
       Array.from(document.getElementsByClassName("part1")).forEach(function (element) {
         element.style.display = "none";
@@ -130,6 +267,25 @@
       });
     });
 
+    // Second Next Button
+    document.getElementById("next2").addEventListener("click", function () {
+
+      if (!areAllQuestionsAnswered("questions1")) {
+        document.getElementById("unanswered1").style.display = "block";
+        return;
+      }
+
+      time2 = new Date();
+
+      Array.from(document.getElementsByClassName("part2")).forEach(function (element) {
+        element.style.display = "none";
+      });
+
+      Array.from(document.getElementsByClassName("part3")).forEach(function (element) {
+        element.style.display = "block";
+      });
+
+    });
 
 
     // Submit Button
@@ -138,12 +294,22 @@
       // Prevent the default form submission
       e.preventDefault();
 
+      if (!areAllQuestionsAnswered("questions2")) {
+        document.getElementById("unanswered2").style.display = "block";
+        return;
+      }
+
+      time3 = new Date();
+
       // Update Display Message
       var messageDiv = document.getElementById("message");
       var messageBody = messageDiv.querySelector(".message-body");
+      messageDiv.classList.remove("is-success");
+      messageDiv.classList.remove("is-danger");
       messageDiv.classList.add("is-warning");
       messageBody.textContent = "Submitting..";
       messageDiv.style.display = "block";
+      window.scrollTo(0, document.body.scrollHeight);
       document.getElementById("submit-button").disabled = true;
 
       // Collect the form data
@@ -152,6 +318,8 @@
       for (var pair of formData.entries()) {
         keyValuePairs.push(pair[0] + "=" + pair[1]);
       }
+      keyValuePairs.push(`Time ${resumeType1}=${(time2 - time1) / 1000}`);
+      keyValuePairs.push(`Time ${resumeType2}=${(time3 - time2) / 1000}`);
       var formDataString = keyValuePairs.join("&");
       console.log(formDataString);
 
@@ -181,16 +349,6 @@
         messageBody.textContent = "Data submitted successfully! Thank you for your response.";
         messageDiv.classList.remove("is-warning");
         messageDiv.classList.add("is-success");
-        document.getElementById("submit-button").disabled = false;
-        document.getElementById("form").reset();
-
-        // Hide the message after a few seconds
-        setTimeout(function () {
-          messageBody.textContent = "";
-          messageDiv.classList.remove("is-success");
-          messageDiv.classList.remove("is-warning");
-          messageDiv.style.display = "none";
-        }, 2600);
 
       }).catch(function (error) {
 
