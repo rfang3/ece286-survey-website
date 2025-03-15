@@ -28,7 +28,7 @@ function createPopupImage() {
     image.src = imgs[Math.floor(Math.random() * imgs.length)];
     image.alt = 'Popup Image';
     image.style.display = 'none';
-    image.style.width = '300px';
+    image.style.width = '600px';
 
     // Calculate and log the aspect ratio once the image is loaded
     image.onload = function () {
